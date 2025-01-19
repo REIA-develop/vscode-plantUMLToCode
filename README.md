@@ -30,6 +30,7 @@ xml create uses tools in below<br/>
 - java // not implements
 
 # Getting standard
+0. install this extension reference to [vsix install way](https://code.visualstudio.com/docs/editor/extension-marketplace#_install-from-a-vsix)<br/>
 1. create PlantUML class Diagram And generate xmi file(but xmi Extensions at I use Tools)<br/>
 &nbsp;&nbsp;&nbsp;About High Detailed Writing rule, reference to [OfficialSite](https://plantuml.com/).<br/>
 &nbsp;&nbsp;&nbsp;But Setting below rules for Execute Auto Generate.
@@ -49,6 +50,7 @@ example image<br/>
 
 sorry for japanese images.
 
+0. この拡張機能をインストールする。vsix形式のためインストール方法は[vsix install way](https://code.visualstudio.com/docs/editor/extension-marketplace#_install-from-a-vsix)を参照ください。<br/>
 1. PlantUMLでクラス図とxmiファイルを作成する(ただし、前述したxmiファイル作成ツールを用いてください)<br/>
 &nbsp;&nbsp;&nbsp;PlantUMLの詳しい記載については[公式サイト](https://plantuml.com/).を参照ください。<br/>
 &nbsp;&nbsp;&nbsp;ですが、自動生成のために以下のルールだけはもうけさせていただきます。
