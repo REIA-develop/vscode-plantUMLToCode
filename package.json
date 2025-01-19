@@ -9,7 +9,9 @@
   "categories": [
     "Other"
   ],
-
+  "activationEvents": [
+    "onCommand:plantumltocode.generate"
+  ],
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [
