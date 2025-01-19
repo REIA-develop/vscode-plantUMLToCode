@@ -2,21 +2,19 @@
   "name": "vscode-plantumltocode",
   "displayName": "vscode-PlantUMLtoCode",
   "description": "Can Generate Code based on the XML of PlantUML-ClassDiagram in VSCode.",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "engines": {
     "vscode": "^1.96.0"
   },
   "categories": [
     "Other"
   ],
-  "activationEvents": [
-    "onCommand:plantumltocode.helloWorld"
-  ],
+
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "plantumltocode.helloWorld",
+        "command": "plantumltocode.generate",
         "title": "Auto Generate based on PlantUML"
       }
     ]
