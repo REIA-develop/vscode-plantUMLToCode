@@ -1,28 +1,42 @@
 import { IllegalArgumentException } from "../IllegalArgumentException";
-import { ISourceElement } from "./ISourceElement";
+import { ISourceElement } from "../ISourceElement";
 
+/**
+ * インターフェースに追加するメソッド群
+ * 通常のメソッドと異なり、{}が不要であるため実装
+ */
 export class AbstructMethod implements ISourceElement{
 	private value : string;
-	
+	private argsMatch : RegExpMatchArray
 	private constructor(
 		value : string
-		
+		,argsMatch : RegExpMatchArray
 	){
 		this.value = value;
+		this.argsMatch = argsMatch;
 		
 	}
+	/**
+	 * インスタンスを生成する
+	 * @param {string} value xmiのvalueの中身
+	 * @returns 
+	 */
 	public static createInstance(value:string) : AbstructMethod{
-		return new AbstructMethod(value.replaceAll(" ",""));
+		let valueSpaceDelete : string = value.replaceAll(" ","");
+		let argsTemp : RegExpMatchArray | null = valueSpaceDelete.match(/\(.*\)/);
+		if(argsTemp == null){
+			throw new IllegalArgumentException(
+				`${value} is Illegal Value.(not Found block of Args)`
+			);
+		}
+		return new AbstructMethod(valueSpaceDelete, argsTemp);
 	}
 	public parse() : string{
 		let result = "";
 		/* "REFFERER_URL : String" */
-		let argsTemp : RegExpMatchArray | null = this.value.match(/\(.*\)/)
-		if(argsTemp == null){
-			throw new IllegalArgumentException(`${this.value} is Illegal Value.(not Found Args)`);
-		}
+		
 		let argStr : string = "";
-		argStr = argsTemp[0];
+		argStr = this.argsMatch[0];
 		let nameReturn = this.value.replace(argStr,"");
 
 		let args:string[] = argStr.substring(1,argStr.length - 1).split(",");

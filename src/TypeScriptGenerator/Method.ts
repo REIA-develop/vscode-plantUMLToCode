@@ -1,5 +1,5 @@
 import { IllegalArgumentException } from "../IllegalArgumentException";
-import { ISourceElement } from "./ISourceElement";
+import { ISourceElement } from "../ISourceElement";
 
 export class Method implements ISourceElement{
 	private value : string;
@@ -16,10 +16,13 @@ export class Method implements ISourceElement{
 	}
 	public static createInstance(value:string, visibility:string, isStatic : string) : Method{
 		let staticBool : boolean = false;
-		try{
-			staticBool = Boolean(isStatic);
-		}catch{
-			throw new IllegalArgumentException("have possible Illegal static attribute value : " + isStatic);
+		switch(isStatic.toLowerCase()){
+			case "true":
+				staticBool = true;
+			case "false":
+				break;
+			default:
+				throw new IllegalArgumentException("have possible Illegal static attribute value : " + isStatic);
 		}
 		return new Method(value.replaceAll(" ",""), visibility, staticBool);
 	}

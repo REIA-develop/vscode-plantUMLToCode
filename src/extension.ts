@@ -29,6 +29,7 @@ export function activate(context: vscode.ExtensionContext) {
 			}
 		)
 		if(file == undefined){
+			vscode.window.showErrorMessage("can't load file");
 			return;
 		}
 		
@@ -42,6 +43,7 @@ export function activate(context: vscode.ExtensionContext) {
 			}
 		)
 		if(saveDir == undefined){
+			vscode.window.showErrorMessage("can't load file");
 			return;
 		}
 
@@ -55,6 +57,27 @@ export function activate(context: vscode.ExtensionContext) {
 		let parser : XMLParser = new XMLParser(options)
 		let contentArray : Uint8Array = await vscode.workspace.fs.readFile(file[0])
 		let xmiContent : string = new TextDecoder().decode(contentArray);
+
+		
+		// load classDiagram
+		let classDiagramFile : vscode.Uri[] | undefined = await vscode.window.showOpenDialog(
+			{
+				title:"select class Diagram file"
+				,canSelectFiles:true
+				,canSelectMany:false
+				,filters:{
+					"puml File":["puml"]
+				}
+				,defaultUri : vscode.workspace.workspaceFile
+			}
+		)
+		if(classDiagramFile == undefined){
+			vscode.window.showErrorMessage("can't load file");
+			return;
+		}
+		let classDiagramArray : Uint8Array = await vscode.workspace.fs.readFile(classDiagramFile[0]);
+		let classDiagram : string = new TextDecoder().decode(classDiagramArray);
+
 		let opt : vscode.QuickPickOptions = {
 			canPickMany : false
 			,title : "Language for the generate"
@@ -62,11 +85,13 @@ export function activate(context: vscode.ExtensionContext) {
 		}
 		let selected :string | undefined = await vscode.window.showQuickPick(GeneratorFactory.getSupport(),opt)
 		if(selected == undefined){
+			vscode.window.showErrorMessage("can't select");
 			return;
 		}
 		let generateFactory : GeneratorFactory = GeneratorFactory.createInstance(
 			selected
 			,xmiContent
+			,classDiagram
 			,parser
 			,saveDir[0]
 		)
