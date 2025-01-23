@@ -1,5 +1,5 @@
 
-import { ISourceElement } from "./ISourceElement";
+import { ISourceElement } from "../ISourceElement";
 
 export class Interface implements ISourceElement{
 	private name : string;

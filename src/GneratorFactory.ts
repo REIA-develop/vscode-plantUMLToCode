@@ -12,11 +12,13 @@ export class GeneratorFactory{
 
     ];
     private readonly xmiContent : string;
+    private readonly classDiagram : string;
     private readonly parser  : XMLParser;
     private readonly saveDir : vscode.Uri;
     private readonly selectedIndex : number;
     private constructor(
         xmiContent : string
+        ,classDiagram : string
         ,parser : XMLParser
         ,saveDir : vscode.Uri
         ,selectedIndex : number
@@ -27,6 +29,7 @@ export class GeneratorFactory{
         this.parser = parser;
         this.saveDir = saveDir;
         this.selectedIndex = selectedIndex;
+        this.classDiagram = classDiagram;
     }
     public static getSupport() : Array<string>{
         return GeneratorFactory.SUPPORT;
@@ -34,6 +37,7 @@ export class GeneratorFactory{
     public static createInstance(
         selected : string
         ,xmiContent : string
+        , classDiagram : string
         ,parser : XMLParser
         ,saveDir : vscode.Uri
     ) : GeneratorFactory{
@@ -42,6 +46,7 @@ export class GeneratorFactory{
         }
         return new GeneratorFactory(
             xmiContent
+            ,classDiagram
             ,parser
             ,saveDir
             ,GeneratorFactory.SUPPORT.indexOf(selected)
@@ -50,6 +55,7 @@ export class GeneratorFactory{
     public getGenerator() : IGenerator{
         return this.GENERATOR[this.selectedIndex](
             this.xmiContent
+            ,this.classDiagram
             ,this.parser
             ,this.saveDir
         );

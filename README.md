@@ -5,9 +5,8 @@ Can Create things in this Extensions list in below:
 - SourceCode file
 - field variable or class variable(with access option(ex. private, public))
 - methods(with access option(ex. private, public))
-
+- implements and extends relation<br/>
 But Can't create Package.<br/>
-also Can't write implements and extends.<br/>
 Because not included packages information in XMi of plantUML-ClassDigram<br/>
 About Available Language, reference to Section-Supported Language.<br/>
 
@@ -19,9 +18,8 @@ xml create uses tools in below<br/>
 - ソースファイル
 - フィールド変数またはクラス変数(アクセサ修飾子付き(ex. private,public))
 - メソッド(アクセサ修飾子付き(ex. private,public))
-
+- 実装, 継承 関係
 ただし、PlantUMLで作成したクラス図のXMLファイルの中にパッケージ情報がないため、<br/>
-また、継承関係、実装関係もまた、同様の理由で、作成できません<br/>
 パッケージ構成を作成することはできません。<br/>
 利用可能な言語についてはSupported Languageセクションを参照ください。
 
@@ -33,7 +31,9 @@ xml create uses tools in below<br/>
 1. create PlantUML class Diagram And generate xmi file(but xmi Extensions at I use Tools)<br/>
 &nbsp;&nbsp;&nbsp;About High Detailed Writing rule, reference to [OfficialSite](https://plantuml.com/).<br/>
 &nbsp;&nbsp;&nbsp;But Setting below rules for Execute Auto Generate.
-&nbsp;&nbsp;&nbsp;<ul><li><p>method rule:</p><p>&nbsp;&nbsp;&nbsp;{access option}{name}(){harf-size space}:{harf-size space}{Return type}</p><p>&nbsp;&nbsp;&nbsp;ex. "+ testMethod() : String"</p></li><li><p>variable rule:</p><p>&nbsp;&nbsp;&nbsp;{access option}{name}{harf-size space}:{harf-size space}{type}</p><p>&nbsp;&nbsp;&nbsp;ex. "+ testField : String"</p></li></ul><br/>
+&nbsp;&nbsp;&nbsp;<ul><li><p>method rule:</p><p>&nbsp;&nbsp;&nbsp;{access option}{name}(){harf-size space}:{harf-size space}{Return type}</p><p>&nbsp;&nbsp;&nbsp;ex. "+ testMethod() : String"</p></li><li><p>variable rule:</p><p>&nbsp;&nbsp;&nbsp;{access option}{name}{harf-size space}:{harf-size space}{type}</p><p>&nbsp;&nbsp;&nbsp;ex. "+ testField : String"</p></li><li><p>implements rule:</p><p>&nbsp;&nbsp;&nbsp;{class} ...|> {interface}</p><p>&nbsp;&nbsp;&nbsp;ex. "Dictionary ...|> IDictionary"</p><p>&nbsp;&nbsp;&nbsp;but about point count, extrude from thinks</p></li><li><p>extends rule:</p><p>&nbsp;&nbsp;&nbsp;{sub class} --|> {super class}</p><p>&nbsp;&nbsp;&nbsp;ex. "String --|> Object"</p><p>&nbsp;&nbsp;&nbsp;but about hyphen count, extrude from thinks</p></li>
+</ul><br/>
+
 example image<br/>
 ![image](https://github.com/user-attachments/assets/4caf9d2d-a59a-4693-bc24-5af5f397527b)<br/>
 2. use (Ctrl or Command) + Shit + P  -> click the Auto Generate based on plantUML
@@ -52,7 +52,7 @@ sorry for japanese images.
 1. PlantUMLでクラス図とxmiファイルを作成する(ただし、前述したxmiファイル作成ツールを用いてください)<br/>
 &nbsp;&nbsp;&nbsp;PlantUMLの詳しい記載については[公式サイト](https://plantuml.com/).を参照ください。<br/>
 &nbsp;&nbsp;&nbsp;ですが、自動生成のために以下のルールだけはもうけさせていただきます。
-&nbsp;&nbsp;&nbsp;<ul><li><p>メソッドルール:</p><p>&nbsp;&nbsp;&nbsp;{アクセサ修飾子}{メソッド名}(){半角スペース}:{半角スペース}{戻り値のデータ型}</p><p>&nbsp;&nbsp;&nbsp;ex. "+ testMethod() : String"</p></li><li><p>変数ルール:</p><p>&nbsp;&nbsp;&nbsp;{アクセサ修飾子}{変数名}{半角スペース}:{半角スペース}{データ型}</p><p>&nbsp;&nbsp;&nbsp;ex. "+ testField : String"</p></li></ul><br/>
+&nbsp;&nbsp;&nbsp;<ul><li><p>メソッドルール:</p><p>&nbsp;&nbsp;&nbsp;{アクセサ修飾子}{メソッド名}(){半角スペース}:{半角スペース}{戻り値のデータ型}</p><p>&nbsp;&nbsp;&nbsp;ex. "+ testMethod() : String"</p></li><li><p>変数ルール:</p><p>&nbsp;&nbsp;&nbsp;{アクセサ修飾子}{変数名}{半角スペース}:{半角スペース}{データ型}</p><p>&nbsp;&nbsp;&nbsp;ex. "+ testField : String"</p></li><li><p>implements ルール:</p><p>&nbsp;&nbsp;&nbsp;{class} ...|> {interface}</p><p>&nbsp;&nbsp;&nbsp;ex. "Dictionary ...|> IDictionary"</p><p>&nbsp;&nbsp;&nbsp;ただし、.の数は問いません。</p></li><li><p>extends rule:</p><p>&nbsp;&nbsp;&nbsp;{sub class} --|> {super class}</p><p>&nbsp;&nbsp;&nbsp;ex. "String --|> Object"</p><p>&nbsp;&nbsp;&nbsp;ただし、ハイフンの数は問いません。</p></li></ul><br/>
 Xmiファイル画像イメージ<br/>
 ![image](https://github.com/user-attachments/assets/4caf9d2d-a59a-4693-bc24-5af5f397527b)<br/>
 2. (Ctrl or Command) + Shit + P を実行  -> Auto Generate based on plantUMLをクリック
