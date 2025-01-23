@@ -8,6 +8,7 @@ Can Create things in this Extensions list in below:
 - implements and extends relation<br/>
 But Can't create Package.<br/>
 Because not included packages information in XMi of plantUML-ClassDigram<br/>
+
 About Available Language, reference to Section-Supported Language.<br/>
 
 xml create uses tools in below<br/>
@@ -21,6 +22,7 @@ xml create uses tools in below<br/>
 - 実装, 継承 関係
 ただし、PlantUMLで作成したクラス図のXMLファイルの中にパッケージ情報がないため、<br/>
 パッケージ構成を作成することはできません。<br/>
+
 利用可能な言語についてはSupported Languageセクションを参照ください。
 
 # Supported Language
